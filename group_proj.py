@@ -28,7 +28,11 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.decomposition import KernelPCA
 from sklearn.ensemble import RandomForestClassifier
 
-df_econ = pd.read_csv('MLF_GP2_EconCycle.csv', header=None)
+df_econ = pd.read_csv('MLF_GP2_EconCycle.csv')
+df_econ = df_econ.drop('Date', 1)
+df_econ_transposed = df_econ.T
+
+print(df_econ_transposed)
 
 
 
