@@ -28,11 +28,30 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.decomposition import KernelPCA
 from sklearn.ensemble import RandomForestClassifier
 
-df_econ = pd.read_csv('MLF_GP2_EconCycle.csv')
-df_econ = df_econ.drop('Date', 1)
-df_econ_transposed = df_econ.T
+df_original = pd.read_csv('MLF_GP2_EconCycle.csv')
+df_econ = df_original.drop('Date', 1)
+print(df_econ)
 
-print(df_econ_transposed)
+sns.pairplot(df_econ, size = 2.5)
+plt.tight_layout()
+plt.show()
+
+corr=df_econ.corr()
+#sns.set(font_scale=1.5)
+#heatmap
+fig, ax = plt.subplots(figsize=(12,12))
+hm = sns.heatmap(corr,
+                 cbar=True,
+                 annot=True,
+                 square=True,
+                 fmt='.2g',
+                 annot_kws={'size': 10},
+                 ax = ax,
+                 yticklabels=df_econ.columns,
+                 xticklabels=df_econ.columns)
+
+plt.tight_layout()
+plt.show()
 
 
 
